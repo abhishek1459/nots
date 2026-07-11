@@ -2,13 +2,13 @@
 
 This project can be deployed to multiple platforms. Follow the instructions below for your preferred hosting provider.
 
-## Environment Variables
+## Environment Variables Setup
 
-Before deploying, set up the following environment variables in your deployment platform:
+Before deploying, you must set up these environment variables in your deployment platform:
 
 ```
-VITE_SUPABASE_URL=your-supabase-url
-VITE_SUPABASE_ANON_KEY=your-supabase-anon-key
+VITE_SUPABASE_URL=https://your-project.supabase.co
+VITE_SUPABASE_ANON_KEY=your-anon-key
 ```
 
 ## Vercel Deployment
@@ -96,24 +96,28 @@ wrangler pages deploy dist
 
 ## Troubleshooting
 
-### "Missing Supabase environment variables" error
+### "404 NOT_FOUND" Error on Vercel or Cloudflare Pages
 
-Make sure your deployment platform has the environment variables set correctly:
-- Check the exact variable names (case-sensitive)
-- Verify values are correct
-- Redeploy after adding/updating variables
+**Problem**: You get a 404 error when accessing routes like `/login`, `/` after logging in, etc.
 
-### Build fails
+**Cause**: This is a **Single Page Application (SPA)** built with React Router. All routes are handled client-side, but the server doesn't know this. When you navigate directly to `/login`, the server looks for a physical file and can't find it.
 
-1. Ensure Node.js version is 18+ in your deployment settings
-2. Check that all dependencies are in `package.json`
-3. Run `npm run build` locally to verify the build process
+**Solution**: The routing configuration is already included in the project:
+- **Vercel**: `vercel.json` has a rewrite rule that redirects all routes to `/index.html`
+- **Cloudflare Pages**: `public/_routes.json` handles SPA routing
 
-### Network errors in deployed app
+If you're still getting 404 errors:
 
-1. Verify Supabase project is accessible from public internet
-2. Check Supabase project URL in environment variables
-3. Ensure CORS is properly configured in Supabase dashboard
+1. **For Vercel**: 
+   - Go to Project Settings → Build & Development Settings
+   - Ensure "Build Command" is `npm run build`
+   - Ensure "Output Directory" is `dist`
+   - Redeploy the project
+
+2. **For Cloudflare Pages**:
+   - Go to Settings → Build & Deployments
+   - Clear the build cache and redeploy
+   - Verify `_routes.json` is included in deployment
 
 ---
 

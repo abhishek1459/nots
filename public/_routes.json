@@ -1,0 +1,21 @@
+{
+  "version": 1,
+  "include": [
+    "/*"
+  ],
+  "exclude": [
+    "/favicon.svg",
+    "/favicon.ico",
+    "/*.css",
+    "/*.js",
+    "/assets/*"
+  ],
+  "rules": [
+    {
+      "type": "rewrite",
+      "include": ["/*"],
+      "exclude": ["/favicon.svg", "/favicon.ico", "/*.css", "/*.js", "/assets/*"],
+      "destination": "/index.html"
+    }
+  ]
+}

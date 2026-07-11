@@ -1,10 +1,6 @@
 name = "nots"
-main = "dist/index.html"
-build = { command = "npm run build", cwd = "." }
-site = { include = "dist" }
+pages_build_output_dir = "dist"
 
 [env.production]
-vars = { ENVIRONMENT = "production" }
+name = "nots"
 
-[env.staging]
-vars = { ENVIRONMENT = "staging" }
