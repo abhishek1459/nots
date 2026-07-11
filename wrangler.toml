@@ -1,0 +1,10 @@
+name = "nots"
+main = "dist/index.html"
+build = { command = "npm run build", cwd = "." }
+site = { include = "dist" }
+
+[env.production]
+vars = { ENVIRONMENT = "production" }
+
+[env.staging]
+vars = { ENVIRONMENT = "staging" }
