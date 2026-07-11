@@ -20,10 +20,14 @@ VITE_SUPABASE_ANON_KEY=your-supabase-anon-key
 3. Click "Add New" → "Project"
 4. Select your `nots` repository
 5. Vercel will automatically detect the framework (Vite/React)
-6. Add environment variables in the "Environment Variables" section:
-   - `VITE_SUPABASE_URL`
-   - `VITE_SUPABASE_ANON_KEY`
-7. Click "Deploy"
+6. **IMPORTANT**: Before clicking Deploy, scroll to "Environment Variables" section
+7. Add the following environment variables:
+   - **Name**: `VITE_SUPABASE_URL`  
+     **Value**: `https://yxxhkhbofoohvgaovppj.supabase.co` (your actual Supabase URL)
+   - **Name**: `VITE_SUPABASE_ANON_KEY`  
+     **Value**: `sb_publishable_bj2S4V0xGNIizG00UtN7tA_BMUJNgSY` (your actual anon key)
+8. Make sure both are set for **Production**, **Preview**, and **Development** environments
+9. Click "Deploy"
 
 ### Option 2: Using Vercel CLI
 
